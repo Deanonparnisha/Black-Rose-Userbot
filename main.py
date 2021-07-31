@@ -31,6 +31,7 @@ api_id = 2860432
 api_hash = 2fde6ca0f8ae7bb58844457a239c7214
 app_version = 1.7.1
 device_model = Terminal | By DeanonParnisha | USERBOT |
+db_url = mongodb://localhost:27017
 [plugins]
 root = plugins
 """
