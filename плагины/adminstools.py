@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from time import sleep, perf_counter, time
 
-# Админ комманды
+
 def get_arg(message):
     msg = message.text
     msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
