@@ -2,6 +2,19 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from time import sleep, perf_counter, time
 
+def get_prefix():
+    prefix = config.get("prefix", "prefix")
+    return prefix
+
+try:
+    prefix = get_prefix()
+
+except Exception as e:
+    config.add_section("prefix")
+    config.set('prefix', 'prefix', '.')
+    with open(config_path, "w") as config_file:
+        config.write(config_file)
+    prefix = '.'
 
 def get_arg(message):
     msg = message.text
