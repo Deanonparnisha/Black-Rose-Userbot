@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+import random
 
 
 @Client.on_message(filters.command("gosu" , prefixes=".") & filters.me)
