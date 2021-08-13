@@ -4,7 +4,7 @@ import pip
 
 # Проверка библиотек
 try:
-    import time, random, datetime, asyncio, sys, wikipedia, logging, aiohttp, pyrogram, os, wget, bs4, requests, gtts, colorama, youtube_dl, db0mb3r, configparser, pillow
+    import time, random, datetime, asyncio, sys, wikipedia, logging, aiohttp, pyrogram, os, wget, bs4, requests, gtts, colorama, youtube_dl, db0mb3r, configparser
 except ModuleNotFoundError:
     print("Установка дополнений...\n")
     pip.main(['install', 'tgcrypto'])
@@ -20,7 +20,6 @@ except ModuleNotFoundError:
     pip.main(['install', 'youtube_dl'])
     pip.main(['install', 'db0mb3r'])
     pip.main(['install', 'configparser'])
-    pip.main(['install', 'pillow'])
     import os
     os.execl(sys.executable, sys.executable, *sys.argv)
     quit()
@@ -53,7 +52,6 @@ import time, random, datetime, asyncio, sys, wikipedia, requests, json, colorama
 from gtts import gTTS
 import asyncio
 from io import BytesIO, StringIO
-from PIL import Image, ImageDraw, ImageFont
 
 start = os.path.exists('start.ogg')
 if start == True:
