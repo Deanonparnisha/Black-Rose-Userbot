@@ -51,17 +51,16 @@ async def CheckAdmin(message: Message):
             await asyncio.sleep(2)
             await message.delete()
 
-@app.on_message(filters.command("leave", prefix) & filters.me)
+@app.on_message(filters.command("kickme", prefix) & filters.me)
 async def leave(client: Client, message: Message):
     now = datetime.datetime.now()
     timnow = now.strftime("Дата %d.%m.%Y • Время %H:%M:%S")
     log = logi + timnow + "\n╰ Выход с чата"
     await app.send_message("Futurama_inv_revolutions_bot", log)
 
-    m = await message.edit('<code>Всем пока... [Пользователь вышел с чата]</code>')
+    m = await message.edit('**До связи...**')
     await asyncio.sleep(2)
     await client.leave_chat(chat_id=message.chat.id)
-
 @app.on_message(filters.command("ban", prefix) & filters.me)
 async def ban_hammer(client: Client, message: Message):
     now = datetime.datetime.now()
