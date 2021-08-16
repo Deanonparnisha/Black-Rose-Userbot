@@ -1946,4 +1946,10 @@ async def pidoras(client: Client, message: Message):
     await asyncio.sleep(1)
     await message.edit("Ладно не соси")
 
+@app.on_message(filters.command("yarik", prefix) & filters.me)
+async def pidoras(client: Client, message: Message):
+    await message.edit("Top")
+    await asyncio.sleep(1)
+    await message.edit("Не топ")
+
 app.run()
