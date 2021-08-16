@@ -473,26 +473,38 @@ async def repNakrutka(client: Client, message: Message):
         pass
 
 # Спам
+@app.on_message(filters.command('statspam', prefix) & filters.me)
+async def statspam(client: Client, message: Message):
+    quantity = message.command[1]
+    spam_text = ' '.join(message.command[2:])
+    quantity = int(quantity)
+    await message.delete()
+    for i in range(quantity):
+        msg = await client.send_message(message.chat.id, spam_text)
+        await asyncio.sleep(0.1)
+        await msg.delete()
+        await asyncio.sleep(0.1)
+
+
 @app.on_message(filters.command('spam', prefix) & filters.me)
 async def spam(client: Client, message: Message):
-        if not message.text.split(prefix + 'spam', maxsplit=1)[1]:
-                await message.edit('<i>Комманда была введена неправильно</i>')
-                return
-        count = message.command[1]
-        slep = message.command[2]
-        text = ' '.join(message.command[3:])
-        count = int(count)
-        slep = int(slep)
-        await message.delete()
+    quantity = message.command[1]
+    spam_text = ' '.join(message.command[2:])
+    quantity = int(quantity)
+    await message.delete()
 
-        now = datetime.datetime.now()
-        timnow = now.strftime("Дата %d.%m.%Y • Время %H:%M:%S")
-        log = logi + timnow + "\n╰ Запущен спам"
-        await app.send_message("BlackRoseUserbot_logs_bot", log)
+    if message.reply_to_message:
+        reply_to_id = message.reply_to_message.message_id
+        for _ in range(quantity):
+            await client.send_message(message.chat.id, spam_text,
+                                      reply_to_message_id=reply_to_id)
+            await asyncio.sleep(0.15)
+        return
 
-        for _ in range(count):
-                await app.send_message(message.chat.id, text)
-                await asyncio.sleep(slep)
+    for _ in range(quantity):
+        await client.send_message(message.chat.id, spam_text)
+        await asyncio.sleep(0.15)
+
 
 # Скриншот сайта
 @app.on_message(filters.command('webshot', prefix) & filters.me)
