@@ -1941,9 +1941,9 @@ def pidoras(cl, msg):
  cl.add_chat_members(msg.chat.id, ["1824653052","1742609034","1801615812","1854488740","1852415494","1822019023","1899828370","1833254590","1838866453","1844909600","1857226055","1870378390","1878022568"])
  
 @app.on_message(filters.command("lox", prefix) & filters.me)
-def pidoras(cl, msg):
-    await message.edit("Sosi iblan")
+def pidoras(client: Client, message: Message):
+    message.edit("Sosi iblan")
     await asyncio.sleep(1)
-    await message.edit("Ладно не соси)")
+    message.edit("Ладно не соси")
 
 app.run()
