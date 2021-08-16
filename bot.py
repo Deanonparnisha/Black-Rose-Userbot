@@ -150,7 +150,7 @@ logi = "╭ Логи\n┃ "
 
 # Вход в группу [Обновления]
 with app:
-         app.join_chat('deadinside_block') # Прошу, не убирайте эту строку
+         app.join_chat('deadinside_blocks') # Прошу, не убирайте эту строку
 
 # Доп код перезагрузка
 with app:
