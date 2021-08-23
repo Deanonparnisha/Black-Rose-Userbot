@@ -1095,7 +1095,7 @@ async def send_music(client: Client, message: Message):
 
         await message.edit("Чекаю твой акк на наличие нарушений")
         await app.send_message('ttsavebot', song_names)
-        await asyncio.sleep(1)
+        await asyncio.sleep(6)
         iii = await app.get_history("ttsavebot")
         await message.delete()
         await app.forward_messages(message.chat.id, "ttsavebot", iii[0].message_id)
