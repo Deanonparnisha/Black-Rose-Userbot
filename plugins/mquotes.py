@@ -5,7 +5,7 @@ from io import BytesIO
 import requests
 
 
-@Client.on_message(filters.command(["mquote", "mq"], prefix) & filters.me)
+@Client.on_message(filters.command(["mquote", "mq"], prefixes=".") & filters.me)
 async def quotes(client: Client, message: Message):
     await message.edit("<code>Quoting ...</code>")
     if message.reply_to_message:
