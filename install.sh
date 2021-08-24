@@ -9,4 +9,4 @@ LDFLAGS="-L${PREFIX}/lib/" CFLAGS="-I${PREFIX}/include/" pip install --upgrade w
 apt install ffmpeg -y
 pip3 install -r requirements.txt
 
-python3 install.py $uservar
+python3 install.py
