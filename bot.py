@@ -232,6 +232,9 @@ async def help(client: Client, message: Message):
 ⇛ <code>voice</code> [Текст] - Текст в голосовое
 ⇛ <code>text</code> [Ответ на голосовое] - Голосовое сообщение в текст
 ⇛ <code>cl</code> [Текст] - Шифровка текста [Только пользователи CLIP]
+⇛ <code>dem</code>
+⇛ <code>mq</code>
+⇛ <code>stp</code>
 
 『Администрация』
 ⇛ <code>ban</code> - Бан
