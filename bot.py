@@ -20,7 +20,7 @@ except ModuleNotFoundError:
     pip.main(['install', 'youtube_dl'])
     pip.main(['install', 'db0mb3r'])
     pip.main(['install', 'configparser'])
-    pip.main(['install', 'pillow'])
+    pip.main(['install', '--upgrade wheel pillow'])
     import os
     os.execl(sys.executable, sys.executable, *sys.argv)
     quit()
