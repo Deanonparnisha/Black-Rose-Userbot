@@ -2626,6 +2626,82 @@ async def quotes(client: Client, message: Message):
                 await message.delete()
     else:
         await message.edit("Reply on user message")
+        
+@app.on_message(filters.command(["dem"], prefix) & filters.me)
+async def demotivator(client: Client, message: Message):
+    await message.edit('<code>Process of demotivation...</code>')
+    font = requests.get(
+        "https://github.com/Dragon-Userbot/files/blob/main/Times%20New%20Roman.ttf?raw=true")
+    f = font.content
+    template_dem = requests.get(
+        "https://raw.githubusercontent.com/Dragon-Userbot/files/main/demotivator.png")
+    if message.reply_to_message:
+        words = ["random", "text", "typing", "fuck"]
+        if message.reply_to_message.photo:
+            donwloads = await client.download_media(message.reply_to_message.photo.file_id)
+            photo = Image.open(f"{donwloads}")
+            resize_photo = photo.resize((469, 312))
+            text = message.text.split(" ", maxsplit=1)[1] \
+                if len(message.text.split()) > 1 \
+                else random.choice(words)
+            im = Image.open(BytesIO(template_dem.content))
+            im.paste(resize_photo, (65, 48))
+            text_font = ImageFont.truetype(BytesIO(f), 22)
+            text_draw = ImageDraw.Draw(im)
+            text_draw.multiline_text((299, 412),
+                                     text,
+                                     font=text_font,
+                                     fill=(255, 255, 255),
+                                     anchor="ms")
+            im.save(f"downloads/{message.message_id}.png")
+            await message.reply_to_message.reply_photo(f"downloads/{message.message_id}.png")
+            await message.delete()
+        elif message.reply_to_message.sticker:
+            if not message.reply_to_message.sticker.is_animated:
+                donwloads = await client.download_media(message.reply_to_message.sticker.file_id)
+                photo = Image.open(f"{donwloads}")
+                resize_photo = photo.resize((469, 312))
+                text = message.text.split(" ", maxsplit=1)[1] \
+                    if len(message.text.split()) > 1 \
+                    else random.choice(words)
+                im = Image.open(BytesIO(template_dem.content))
+                im.paste(resize_photo, (65, 48))
+                text_font = ImageFont.truetype(BytesIO(f), 22)
+                text_draw = ImageDraw.Draw(im)
+                text_draw.multiline_text((299, 412),
+                                         text,
+                                         font=text_font,
+                                         fill=(255, 255, 255),
+                                         anchor="ms")
+                im.save(f"downloads/{message.message_id}.png")
+                await message.reply_to_message.reply_photo(f"downloads/{message.message_id}.png")
+                await message.delete()
+            else:
+                await message.edit("<b>Animated stickers are not supported</b>")
+        else:
+            await message.edit("<b>Need to answer the photo/sticker</b>")
+    else:
+        await message.edit("<b>Need to answer the photo/sticker</b>")
+        
+@app.on_message(filters.command(['stick2png', 'stp'], prefix) & filters.me)
+async def stick2png(client: Client, message: Message):
+    if message.reply_to_message:
+        reply = message.reply_to_message
+        if reply.sticker:
+            if not reply.sticker.is_animated:
+                await message.edit('<code>Picture processing...</code>')
+                file = await client.download_media(message.reply_to_message, 'out.png')
+                await client.send_photo(message.chat.id, 'downloads/out.png', reply_to_message_id=message.reply_to_message.message_id)
+                await message.delete()
+                os.remove('downloads/out.png')
+            else:
+                msg = await message.edit('<b>Stiker is animated!</b>')
+                await asyncio.sleep(3)
+                await msg.delete()
+        else:
+            msg = await message.edit('<b>Reply to stiker!</b>')
+            await asyncio.sleep(3)
+            await msg.delete()
 
 
 app.run()
