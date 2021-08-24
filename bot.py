@@ -54,6 +54,7 @@ from gtts import gTTS
 import asyncio
 from io import BytesIO, StringIO
 from PIL import Image, ImageDraw, ImageFont, ImageOps
+from pyrogram.raw import types, functions
 
 start = os.path.exists('start.ogg')
 if start == True:
@@ -2705,6 +2706,19 @@ async def stick2png(client: Client, message: Message):
             msg = await message.edit('<b>Reply to stiker!</b>')
             await asyncio.sleep(3)
             await msg.delete()
+            
+@app.on_message(filters.command(['sendmod', 'sm'], prefix) & filters.me)
+async def sendmod(client: Client, message: Message):
+    mod_name = message.command[1]
+    try:
+        await message.edit('<code>Dispatch...</code>')
+        text = help_formatting(modules_help[mod_name.lower()], help_type='one_mod', module_name=mod_name.lower())
+        await client.send_document(message.chat.id, f"plugins/{mod_name}.py", caption=text)
+        await message.delete()
+    except:
+        await message.edit('<b>Invalid module name!</b>')
+        await asyncio.sleep(5)
+        await message.delete()
 
 
 app.run()
