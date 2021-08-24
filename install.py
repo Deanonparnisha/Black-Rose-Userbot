@@ -11,7 +11,7 @@ if len(sys.argv) == 2:
     config = configparser.ConfigParser()
     config.read(config_path)
 
-    config.set('pyrogram', 'db_url', arg)
+    config.set('pyrogram', arg)
     with open(config_path, "w") as config_file:
         config.write(config_file)
 
