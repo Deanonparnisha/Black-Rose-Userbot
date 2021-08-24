@@ -21,4 +21,4 @@ if len(sys.argv) == 2:
 
     app.stop()
 
-    print('Account is successfully linked, for run use: python main.py')
+    print('Account is successfully linked, for run use: python bot.py')
