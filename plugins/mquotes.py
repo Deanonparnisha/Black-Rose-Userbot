@@ -618,7 +618,3 @@ async def quotes(client: Client, message: Message):
                 await message.delete()
     else:
         await message.edit("Reply on user message")
-
-
-modules_help.update({'mquotes': '''mquote - Reply on user message''',
-                     'mquotes module': 'MQuotes: mquote\n'})
