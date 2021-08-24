@@ -52,6 +52,7 @@ import time, random, datetime, asyncio, sys, wikipedia, requests, json, colorama
 from gtts import gTTS
 import asyncio
 from io import BytesIO, StringIO
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 start = os.path.exists('start.ogg')
 if start == True:
