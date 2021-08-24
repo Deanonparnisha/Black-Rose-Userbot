@@ -9,9 +9,4 @@ LDFLAGS="-L${PREFIX}/lib/" CFLAGS="-I${PREFIX}/include/" pip install --upgrade w
 apt install ffmpeg -y
 pip3 install -r requirements.txt
 
-echo ====================================
-read -p 'Enter your db_url: ' uservar
-echo ====================================
-
 python3 install.py $uservar
-
